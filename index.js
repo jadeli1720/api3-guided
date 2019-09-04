@@ -1,5 +1,6 @@
+//import server from './api/server.js'
 const server = require('./api/server.js')
 
+const port= 8000;
 
-const port= 8000
-server.listen(port, () => console.log(`\n** API on port ${port}**\n`))
+server.listen(port, () => console.log(`\n** API on port ${port}**\n`));
