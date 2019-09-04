@@ -75,7 +75,7 @@ mw = middleware
 - can see the request and do something with the information   from the request
 - can stop the request and produce a response
 - can do nothing
-- can do the same with the response as it does with the   r   request
+- can do the same with the response as it does with the   r         request
 - **can modify the request or response objects**
 
 three types:

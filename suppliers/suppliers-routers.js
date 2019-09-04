@@ -1,16 +1,25 @@
-const express = require('express');
+//shortcut
+const router = require('express').Router();
 
-const router = express.Router();
+//custom middleware:
+function uppercaser(req, res, next) {
+    let name = req.params.name;
 
-router.use(express.json());
+    if(name) {
+        req.name = name.toUpperCase();
+    }
+    // this sends the request to the next middleware (or route handler)
+    next();
+};
+
 
 router.get('/', (req, res) => {
     res.send('get to /suppliers/')
 })
 
-router.get('/:name', (req, res) => {
-    const { name } = req.body
-    res.send(`get to /suppliers/${name}`)
+router.get('/:name', uppercaser, (req, res) => {
+    //express needs to know there is a url parameter to collect and show it
+    res.send(`get to /suppliers/${req.params.name}`)
 })
 
-module.exports=router
+module.exports = router;

@@ -1,21 +1,21 @@
 const express = require('express');
-const router = require('../products/products-router')
-const server = express()
+const productsRouter = require('../products/products-router');
+const suppliersRouter = require('../suppliers/suppliers-routers');
 
-//global middleware:
+const server = express();
+
+//global middleware: --> All middleware will run in the order it is called
 server.use(express.json());//---> parse and turn into javascript object
-// server.use('/products', productRouter);
-// server.use('/suppliers', suppliersRouter);
+// server.use(uppercaser); //using custom middleware globally
+
+//we can use middleware locally
+server.use('/products', productsRouter);
+server.use('/suppliers', suppliersRouter);
 
 //route handlers ---> this is just middleware and can also  modify the request or response objects as well
 server.get('/', (req, res) => {
     res.status(200).json({api: 'up'})
 })
-
-//manage products (8) ----> the products, clients.....are all resources in RESTful API speak
-//manage clients (8)
-//manage orders
-//manage suppliers
 
 
 server.get('/clients', (req, res) => {
