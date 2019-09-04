@@ -1,13 +1,11 @@
 const express = require('express');
-const server = require('../products/products-router')
-
-const server = express();
+const router = require('../products/products-router')
+const server = express()
 
 //global middleware:
 server.use(express.json());//---> parse and turn into javascript object
-
-server.use('/products', productRouter);
-server.use('/suppliers', suppliersRouter);
+// server.use('/products', productRouter);
+// server.use('/suppliers', suppliersRouter);
 
 //route handlers ---> this is just middleware and can also  modify the request or response objects as well
 server.get('/', (req, res) => {
